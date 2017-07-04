@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyApp">
+<head>
+   <script src="https://code.angularjs.org/1.3.11/angular.js"></script>
+  <script src="MyApp.js"></script>
+<style type="text/css">
+.container {
+	width: 1000px;
+	text-align: center
+}
+h1 {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 24px;
+	color: #0075b0;
+	text-align: center;
+}
+h2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	color: #ffffff;
+	text-align: center;
+	padding: 3px 0;
+	margin: 0;
+}
+p {
+	margin: 0;
+}
+.box {
+	width: 400px;
+	margin: 30px 20px;
+	border: medium #0075b0 solid;
+	display: inline-block;
+	float: left;
+}
+.rbox {
+	width: 400px;
+	margin: 30px 20px;
+	border: medium #0075b0 solid;
+	display: inline-block;
+	float: right;
+}
+.header {
+	background-color: #0075b0;
+	width: 400px;
+	margin: 0;
+}
+.row {
+	display: inline-block;
+	margin: auto;
+}
+.ltext {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #666;
+	width: 130px;
+	text-align: right;
+	margin: 20px 20px 0 0;
+	float: left;
+	display: inline-block;
+	line-height: 25px;
+}
+.inter {
+	display: inline-block;
+	float: left;
+}
+.right {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #666;
+	width: 230px;
+	float: left;
+	margin: 20px 0;
+	text-align: left;
+	line-height: 25px;
+}
+</style>
+</head>
+
+<body ng-controller="calcController as vm">
+<div class="container" >
+  <div>
+    <h1>Waitstaff calculator</h1>
+  </div>
+  <div class="row"> <!-- top row of box -->
+
+    <div class="box"> <!-- details Box -->
+
+
+         <form name="myForm" ng-submit="submit()">
+      <div class="header">
+        <h2>Meal details</h2>
+      </div>
+      <div> <!-- content -->
+
+        <div class="ltext"> Base meal price <br />
+          Tax rate: <br />
+          Tip percentage: </div>
+        <div class="right">
+
+            <input type="number" ng-model="vm.meal" required/>
+            <br />
+            <input type="number" ng-model="vm.taxRate" required/>%
+            <br />
+            <input type="number" ng-model="vm.tip" required/>
+            %
+
+            <br />
+            <button type="submit">Submit</button>
+            <button type="reset">Cancel</button>
+          </form>
+        </div>
+      </div>
+      <!-- END content -->
+
+      <br />
+      <br />
+    </div>
+    <!-- END: details Box -->
+
+
+
+<div> <!-- right side boxes -->
+
+
+        <div class="box"> <!-- Charges  Box -->
+
+        <div class="header">
+          <h2>Customer charges</h2>
+        </div>
+
+          <div class="ltext inter"> Subtotal: {{ vm.subtotal }} <br />
+            Tip: {{ vm.tipAmount }}<br />
+            Total: {{ vm.total }}</div>
+
+        <!-- END Inter -->
+        </div>
+      <!-- END charges Box -->
+
+
+
+        <div class="box"> <!-- Earnings -->
+        <div class="header">
+          <h2>Earnings</h2>
+        </div>
+        <div class="ltext inter"> Tip total:  {{ vm.tipTotal }}<br />
+            Meal count: {{ vm.count }}<br />
+            average tip:  {{ vm.averageTip }} </div>
+         </div>
+      <!-- END earnings box -->
+
+    </div>
+    <!-- END Right side boxs -->
+
+  </div>
+  <!-- End top row -->
+
+   <button ng-click="init()">Reset</button>
+</div>
+<!-- END container -->
+
+</body>
+</html>
